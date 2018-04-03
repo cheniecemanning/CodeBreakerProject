@@ -11,6 +11,20 @@ function guess() {
     }
 }
 
+function getResults(input){
+    let html = '<div class="row"><span class="col-md-6">' + input + '</span><div class="col-md-6">';
+
+    for(i = 0; i < input.length; i++){
+        if (input.value.charAt(i) == answer.value.charAt(i)){
+            html += '<span class="glyphicon glyphicon-ok"></span>';
+        } else if (answer.value.includes(input.value.chartAt(i))){
+            html += '<span class="glyphicon glyphicon-transfer"></span>';
+        }else{
+            html += '<span class="glyphicon glyphicon-remove"></span>';
+        }
+    }
+    html += '</div></div>'
+}
 //implement new functions here
 function setHiddenFields(){
     answer.value = Math.floor(Math.random() * 9999);
