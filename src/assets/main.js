@@ -51,9 +51,7 @@ function getResults(input){
         return false;
     }
 }
-console.log(setHiddenFields());
 
-console.log(getResults());
 //implement new functions here
 function setHiddenFields(){
     answer.value = Math.floor(Math.random() * 9999);
@@ -83,7 +81,20 @@ function setHiddenFields(){
 function setMessage(message){
    document.getElementById('message').innerHTML = message;
 }
+function showAnswer(success){
+    let code = document.getElementById('code');
+    if(success) {
+        code.className += " success";
+    } else {
+        code.className += " failure";
+    }
+    code.innerHTML = answer.value;
+}
 
+function showReplay(){
+    document.getElementById('guessing-div').style.display = "none";
+    document.getElementById('replay-div').style.display = "block";
+}
 function validateInput(input){
     if (input.length === 4){ 
         return true;
@@ -92,4 +103,4 @@ function validateInput(input){
         return false;
     }
 }
-console.log(getResults());
+
