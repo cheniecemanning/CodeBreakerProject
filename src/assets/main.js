@@ -3,28 +3,48 @@ let attempt = document.getElementById('attempt');
 
 function guess() {
     let input = document.getElementById('user-guess');
-    //add functionality to guess function here
-    if (!validateInput(input.value)){   
-        return false;
-    } else{
-        attempt.value++; 
+    if(answer.value == "" || attempt.value == "") {
+        setHiddenFields();
+    }
+
+    //Ensure user input is valid, iterate attempt if valid
+    if(!validateInput(input.value)){
+        return;
+    } else {
+        attempt.value++;
+    }
+
+    //Check user input against answer and display results
+    if(getResults(input.value)) {
+        setMessage('You Win! :)');
+        showAnswer(true);
+        showReplay();
+    } else if(attempt.value >= 10) {
+        setMessage('You Lose! :(');
+        showAnswer(false);
+        showReplay();
+    } else {
+        setMessage('Incorrect, try again.');
     }
 }
 
 function getResults(input){
     let html = '<div class="row"><span class="col-md-6">' + input + '</span><div class="col-md-6">';
-
-    for(i = 0; i < input.length; i++){
-        if (input.value.charAt(i) == answer.value.charAt(i)){
+    for(var i = 0; i < input.length; i++){
+        if (input.charAt(i) === answer.value.charAt(i)){
             html += '<span class="glyphicon glyphicon-ok"></span>';
-        } else if (answer.value.includes(input.value.chartAt(i))){
+        } else if (answer.value.includes(input.charAt(i)) > -1){
             html += '<span class="glyphicon glyphicon-transfer"></span>';
         }else{
             html += '<span class="glyphicon glyphicon-remove"></span>';
         }
     }
-    html += '</div></div>'
+    html += '</div></div>';
+
+    document.getElementById('results').innerHTML += html;
+    
 }
+
 //implement new functions here
 function setHiddenFields(){
     answer.value = Math.floor(Math.random() * 9999);
@@ -63,4 +83,4 @@ function validateInput(input){
         return false;
     }
 }
-console.log(setHiddenFields());
+console.log(getResults());
