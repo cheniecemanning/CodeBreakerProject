@@ -45,6 +45,11 @@ function getResults(input){
 
     document.getElementById('results').innerHTML += html;
     
+    if (correct ==  input.length){
+        return true;
+    } else {
+        return false;
+    }
 }
 console.log(setHiddenFields());
 
