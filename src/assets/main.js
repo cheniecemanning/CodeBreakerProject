@@ -33,8 +33,8 @@ function setHiddenFields(){
 
 }
 
-function setMessage(){
-    document.getElementById('message').innerHTML = " ";;
+function setMessage(message){
+   document.getElementById('message').innerHTML = message;
 }
 
 console.log(setHiddenFields());
