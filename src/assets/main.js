@@ -26,13 +26,15 @@ function setHiddenFields(){
 
          default:
             answer.value ==  answer.value;
-
     }
-
 
     attempt = 0;
     return answer;
 
+}
+
+function setMessage(){
+    document.getElementById('message').innerHTML = " ";;
 }
 
 console.log(setHiddenFields());
