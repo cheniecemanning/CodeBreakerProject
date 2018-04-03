@@ -8,29 +8,30 @@ function guess() {
 
 //implement new functions here
 function setHiddenFields(){
-    answer = Math.floor(Math.random() * 10000).toString;
+    answer = Math.floor(Math.random() * 9999);
+    answer = answer.toString();
 
-    switch(answer.value.length <= 4){
-        case answer.value.length === 3:
-         answer.value += "0" + answer
+    switch(answer.length <= 4){
+        case answer.length === 3:
+          answer = "0" + answer
          break;
 
-        case answer.value.length === 2:
-         answer.value += "00" + answer
+        case answer.length === 2:
+        answer =  "00" + answer
          break;
 
-         case answer.value.length === 1:
-         answer.value += "000" + answer
+         case answer.length === 1:
+         answer = "000" + answer
          break;
 
          default:
-            answer.value ==  answer;
+            answer ==  answer;
 
     }
 
 
     attempt = 0;
-
+    return answer;
 
 }
 
