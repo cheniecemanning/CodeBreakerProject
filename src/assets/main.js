@@ -35,7 +35,7 @@ function getResults(input){
         if (input.charAt(i) === answer.value.charAt(i)){
             html += '<span class="glyphicon glyphicon-ok"></span>';
             correct++;
-        } else if (answer.value.includes(input.charAt(i)) > -1){
+        } else if (answer.value.indexOf(input.charAt(i)) > -1){
             html += '<span class="glyphicon glyphicon-transfer"></span>';
         }else{
             html += '<span class="glyphicon glyphicon-remove"></span>';
@@ -46,7 +46,9 @@ function getResults(input){
     document.getElementById('results').innerHTML += html;
     
 }
+console.log(setHiddenFields());
 
+console.log(getResults());
 //implement new functions here
 function setHiddenFields(){
     answer.value = Math.floor(Math.random() * 9999);
